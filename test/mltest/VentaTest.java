@@ -20,12 +20,12 @@ public class VentaTest {
     @Test
     public void testRegistrarVentaSinStock() {
         System.out.println("registrarVenta");
-        Cliente cliente = new Cliente("Pedro", "Lopez", 0, 0, 0);
-        Producto producto = new Producto("Cajas", 25, 0);
-        Vendedor vendedor = new Vendedor("Juancho",0, 0, 0);
-        int cantidad = 1;
+        mockCliente cliente = new mockCliente();
+        mockProducto producto = new mockProducto();
+        mockVendedor vendedor = new mockVendedor();
+        int cantidad = 11;
         Venta instance = new Venta();
-        String expResult = "Error al intentar vender 1 Unidades de Cajas Stock Insuficiente (0).";
+        String expResult = "Error al intentar vender 11 Unidades de nombre Stock Insuficiente (10).";
         String result = instance.registrarVenta(cliente, producto, vendedor, cantidad);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.

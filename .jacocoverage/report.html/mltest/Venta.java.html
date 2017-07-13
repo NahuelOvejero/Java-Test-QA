@@ -8,7 +8,7 @@ package mltest;
 
 /**
  *
- * @author Usuario
+ * @author Nahuel
  */
 <span class="fc" id="L13">public class Venta {</span>
     
@@ -16,11 +16,13 @@ package mltest;
     Vendedor vendedor;
     Cliente comprador;
 
+    
+    
 
   public String registrarVenta (Cliente cliente, Producto producto , Vendedor vendedor , int cantidad){    
-<span class="fc" id="L21">      this.comprador = cliente;</span>
-<span class="fc" id="L22">      this.producto = producto;</span>
-<span class="fc" id="L23">      this.vendedor = vendedor;</span>
+<span class="fc" id="L23">      this.comprador = cliente;</span>
+<span class="fc" id="L24">      this.producto = producto;</span>
+<span class="fc" id="L25">      this.vendedor = vendedor;</span>
       
      /*podrian realizarse metodos auxiliares como &quot;aumentarVenta&quot; / &quot;aumentarCompra&quot;
        que aumente el 1 cada atributo respectivamente.
@@ -28,44 +30,44 @@ package mltest;
       
       
 
-<span class="pc bpc" id="L31" title="1 of 4 branches missed.">    if(producto.getStock() &lt; cantidad || cantidad &lt;= 0){</span>
-<span class="fc" id="L32">      return &quot;Error al intentar vender &quot; + cantidad + &quot; Unidades de &quot; + producto.getNombre() + &quot; Stock Insuficiente (&quot; + producto.getStock() + &quot;).&quot;;</span>
+<span class="pc bpc" id="L33" title="1 of 4 branches missed.">    if(producto.getStock() &lt; cantidad || cantidad &lt;= 0){</span>
+<span class="fc" id="L34">      return &quot;Error al intentar vender &quot; + cantidad + &quot; Unidades de &quot; + producto.getNombre() + &quot; Stock Insuficiente (&quot; + producto.getStock() + &quot;).&quot;;</span>
      }
     else {
         
     }
-<span class="fc" id="L37">      float precio_neto = cantidad * producto.getPrecio();   </span>
+<span class="fc" id="L39">      float precio_neto = cantidad * producto.getPrecio();   </span>
       
       //aumentar compra cliente, bajar stock.      
-<span class="fc" id="L40">      producto.setStock( producto.getStock() - cantidad );      </span>
-<span class="fc" id="L41">      cliente.setNro_compras( cliente.getNro_compras() +1 ); </span>
+<span class="fc" id="L42">      producto.setStock( producto.getStock() - cantidad );      </span>
+<span class="fc" id="L43">      cliente.setNro_compras( cliente.getNro_compras() +1 ); </span>
       
       //vendedor: +++
-<span class="fc" id="L44">      vendedor.setNro_ventas( vendedor.getNro_ventas() + 1 ); </span>
-<span class="fc" id="L45">      float puntajeAntiguo = vendedor.getPuntaje();        </span>
+<span class="fc" id="L46">      vendedor.setNro_ventas( vendedor.getNro_ventas() + 1 ); </span>
+<span class="fc" id="L47">      float puntajeAntiguo = vendedor.getPuntaje();        </span>
       
-<span class="fc" id="L47">      float precio_final = 0;</span>
+<span class="fc" id="L49">      float precio_final = 0;</span>
       
-<span class="pc bpc" id="L49" title="1 of 2 branches missed.">      if(cliente.getMonto_total() &gt;= 10000){</span>
-<span class="nc" id="L50">          precio_final = precio_neto - (precio_neto * 25 / 100) ;</span>
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">      if(cliente.getMonto_total() &gt;= 10000){</span>
+<span class="nc" id="L52">          precio_final = precio_neto - (precio_neto * 25 / 100) ;</span>
       } 
       else{
-<span class="fc" id="L53">          precio_final = precio_neto - (precio_neto * 25 / 100) * (cliente.getNro_compras() / 10000) ;</span>
+<span class="fc" id="L55">          precio_final = precio_neto - (precio_neto * 25 / 100) * (cliente.getNro_compras() / 10000) ;</span>
       } 
       
-<span class="fc" id="L56">      comprador.setMonto_total( comprador.getMonto_total() + precio_final);</span>
-<span class="fc" id="L57">      vendedor.setMonto_vendido(vendedor.getMonto_vendido() + precio_final );</span>
+<span class="fc" id="L58">      comprador.setMonto_total( comprador.getMonto_total() + precio_final);</span>
+<span class="fc" id="L59">      vendedor.setMonto_vendido(vendedor.getMonto_vendido() + precio_final );</span>
       
-<span class="fc" id="L59">      vendedor.setPuntaje( 100 - (100/(vendedor.getNro_ventas() * vendedor.getMonto_vendido())));</span>
+<span class="fc" id="L61">      vendedor.setPuntaje( 100 - (100/(vendedor.getNro_ventas() * vendedor.getMonto_vendido())));</span>
       
      
       
  
               
-<span class="fc" id="L65">      return &quot;El producto vendido fue : &quot; + producto.getNombre() + &quot; a $&quot; + producto.getPrecio() + &quot; la unidad.&quot; </span>
+<span class="fc" id="L67">      return &quot;El producto vendido fue : &quot; + producto.getNombre() + &quot; a $&quot; + producto.getPrecio() + &quot; la unidad.&quot; </span>
               + &quot; Siendo &quot; + cantidad + &quot; unidades, por un precio total de : $&quot; + precio_final 
-<span class="fc" id="L67">              + &quot;. Comprador : &quot; + cliente.getNombre() + &quot;. Vendedor : &quot; + vendedor.getNombre() </span>
-<span class="fc" id="L68">              + &quot;Teniendo un puntaje de : &quot; + puntajeAntiguo + &quot; Paso a tener : &quot; + vendedor.getPuntaje();</span>
+<span class="fc" id="L69">              + &quot;. Comprador : &quot; + cliente.getNombre() + &quot;. Vendedor : &quot; + vendedor.getNombre() </span>
+<span class="fc" id="L70">              + &quot;Teniendo un puntaje de : &quot; + puntajeAntiguo + &quot; Paso a tener : &quot; + vendedor.getPuntaje();</span>
 
     }
 }
